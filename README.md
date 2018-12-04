@@ -31,7 +31,10 @@ ecs-cli compose --cluster cluster-name -f docker-compose.yml --ecs-params ecs-pa
 ecs-cli compose --cluster cluster-name -f docker-compose.yml --ecs-params ecs-params service down
 
 #Tag
-docker tag web-nginx:latest ecr-url/web-nginx:tag
+docker tag web-nginx:latest ecr-url/reponame:tag
 
 #push to ECR
-ecs-cli push ecr-url/web-nginx:tag
+ecs-cli push ecr-url/reponame:tag
+
+#scale
+ecs-cli compose --cluster cluster-name -f docker-compose.yml --ecs-params ecs-params service scale 1
