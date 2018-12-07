@@ -24,7 +24,7 @@ Task Definition
 
 steps:
 
-#Start a service
+#Start a service	
 ecs-cli compose --cluster cluster-name -f docker-compose.yml --ecs-params ecs-params service up
 
 #Stop a service
@@ -35,6 +35,12 @@ docker tag web-nginx:latest ecr-url/reponame:tag
 
 #push to ECR
 ecs-cli push ecr-url/reponame:tag
+
+#Create repository for ecs
+aws ecr create-repository --repository-name NAME
+
+#login to ECR, return docker login with key
+aws ecr get-login --no-include-email
 
 #scale
 ecs-cli compose --cluster cluster-name -f docker-compose.yml --ecs-params ecs-params service scale 1
